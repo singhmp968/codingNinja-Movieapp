@@ -8,6 +8,7 @@ import movies from './reducers'
 // in creasteStore method we need to pass reducers
 const store = createStore(movies); // createStore this is being to us by redux 
 console.log('store',store);
+/*
 console.log('Before state',store.getState());
 
 store.dispatch({
@@ -16,10 +17,13 @@ store.dispatch({
   movies: [{name:'Superman'}] //  passing the movie to be added
 }); // it is used to send action in the store
 console.log('After state',store.getState());
+*/
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* passing store as props */}
+    <App store={store} />
   </React.StrictMode>,
   document.getElementById('root')
 );

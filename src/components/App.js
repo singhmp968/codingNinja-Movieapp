@@ -1,7 +1,9 @@
 import React from "react";
 import { data } from '../data'
 import Navbar from './Navbar';
-import MovieCard from './MovieCard'
+import MovieCard from './MovieCard';
+import { addMovies } from "../actions";
+
 //import movies from "../reducers";
 class App extends React.Component {
   componentDidMount(){
@@ -12,10 +14,13 @@ class App extends React.Component {
       console.log('UPDATED')
       this.forceUpdate(); // we should never use this method
     })
-    store.dispatch({
-      type:'ADD_MOVIES',
-      movies: data
-    });
+     store.dispatch(addMovies(data) // passig the movie value and tis function call will return us the below objet
+       //{ as this object we have value which is hardcoded we need to make it dynamic
+    
+      //   type:'ADD_MOVIES', // this is of typ of action
+    //   movies: data
+    // }
+    );
     console.log('STATE',this.props.store.getState())
   }
 
@@ -23,7 +28,10 @@ class App extends React.Component {
   
   render(){   
     console.log('RENDER') 
-  const movies = this.props.store.getState(); // gtting from index.js file
+  //const movies = this.props.store.getState(); // gtting from index.js file
+  const {list} = this.props.store.getState(); // gtting from index.js file
+  console.log('NEW STATE',this.props.store.getState()); 
+  
   return (
     <div className="App">
         <Navbar />
@@ -34,7 +42,8 @@ class App extends React.Component {
               </div>
               <div className="lsit">
                 {//data.map((movie,index) =>(
-                movies.map((movie,index) =>(
+               // movies.map((movie,index) =>(
+                list.map((movie,index) =>(
                   
                   //  passing movie data via props
                   //console.log('movie',movie)

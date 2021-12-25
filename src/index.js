@@ -7,10 +7,12 @@ import App from './components/App';
 // import movies from './reducers' as we are impprting rootReducers
 // importing thr root reducers
 import rootReducer from './reducers';
+import combineReducers from './reducers';
+
 // in creasteStore method we need to pass reducers
 //const store = createStore(movies); // createStore this is being to us by redux 
 // here we are now passing the root reducers
-const store = createStore(rootReducer); // createStore this is being to us by redux 
+const store = createStore(combineReducers); // createStore this is being to us by redux 
 
 console.log('store',store);
 /*

@@ -1,4 +1,5 @@
-//import { combineReducers } from 'redux'
+// this is used in the place of rootReducers
+import { combineReducers } from 'redux' 
 
 //const ADD_MOVIES = 'ADD_MOVIES';
 // step2: import Action
@@ -73,13 +74,32 @@ const initialRootState = {
     search:initialSearchState
 }
 // creating a default functions
-export default function rootReducer(state = initialRootState,action){
-    return{
-        movies:movies(state.movies,action), // here we are just telling movie should be manage by movieReducer and search should be manage by search reducer
-        search: search(state.search,action)
+// export default function rootReducer(state = initialRootState,action){
+//     return{
+//         movies:movies(state.movies,action), // here we are just telling movie should be manage by movieReducer and search should be manage by search reducer
+//         search: search(state.search,action)
 
-    }
-}
+//     }
+//}
+//import { combineReducers } from 'redux' 
+/*
+export default combineReducers({
+    movies:movies, //export  function movies (state=initialMovieState, action) {
+
+    search:search// export default function rootReducer(state = initialRootState,action){
+
+}) 
+
+*/
+
+export default combineReducers({
+    movies, //export  function movies (state=initialMovieState, action) {
+
+    search// export default function rootReducer(state = initialRootState,action){
+
+}) 
+
+
 /*
 export default function movies (state=[], action) {
     if(action.type ===ADD_MOVIES){

@@ -1,14 +1,23 @@
+//import { combineReducers } from 'redux'
+
 //const ADD_MOVIES = 'ADD_MOVIES';
 // step2: import Action
 // reducer is our 2nd  step we need to inport action
-import { ADD_MOVIES,ADD_FAVOURITE,REMOVE_FROM_FAVOURITES, SET_SHOW_FAVOURITES } from '../actions' // importing ADD_MOVIES from actio folder
+import { ADD_MOVIES,
+        ADD_FAVOURITE,
+        REMOVE_FROM_FAVOURITES,
+        SET_SHOW_FAVOURITES
+     } from '../actions' // importing ADD_MOVIES from actio folder
 const initialMovieState = {
     list:[],
     favourites:[],
     showFavoirites: false
 }
-export default function movies (state=initialMovieState, action) {
-   /* if(action.type ===ADD_MOVIES){
+//export default function movies (state=initialMovieState, action) {
+// as we are exporting rootReducer and we connot have multiple defaults in a file
+export  function movies (state=initialMovieState, action) {
+  console.log('Movies Reducer')
+/* if(action.type ===ADD_MOVIES){
         return {
             ...state, // here we are spreading the state objects
             list:action.movies
@@ -48,6 +57,29 @@ export default function movies (state=initialMovieState, action) {
    }    
 }
 
+// adding the functionalities of search
+const initialSearchState = {
+    return:{}
+}
+//addding teh functionalties of search
+export function search (state = initialSearchState,action){
+  console.log('Search Reducer')
+    
+    return state;
+}
+// careating initialRootState
+const initialRootState = {
+    movies:initialMovieState,
+    search:initialSearchState
+}
+// creating a default functions
+export default function rootReducer(state = initialRootState,action){
+    return{
+        movies:movies(state.movies,action), // here we are just telling movie should be manage by movieReducer and search should be manage by search reducer
+        search: search(state.search,action)
+
+    }
+}
 /*
 export default function movies (state=[], action) {
     if(action.type ===ADD_MOVIES){
